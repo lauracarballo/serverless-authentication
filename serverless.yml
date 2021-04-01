@@ -1,0 +1,65 @@
+service: users
+
+frameworkVersion: "2"
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  environment:
+    USERS_TABLE: { Ref: usersTable }
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+        - dynamodb:Scan
+        - dynamodb:GetItem
+      Resource: { Fn::GetAtt: [usersTable, Arn] }
+
+functions:
+  signup:
+    handler: handler.signup
+    events:
+      - http:
+          path: signup
+          method: post
+          cors: true
+
+  login:
+    handler: handler.login
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+  profile:
+    handler: handler.profile
+    events:
+      - http:
+          path: profile
+          method: get
+          cors: true
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: "users"
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: sortKey
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: sortKey
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+plugins:
+  - serverless-offline

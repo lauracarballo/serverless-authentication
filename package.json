@@ -1,0 +1,21 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie": "^0.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "short-unique-id": "^3.2.3"
+  },
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^3.9.0",
+    "serverless-offline": "^6.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
