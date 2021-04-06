@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const cookie = require("cookie");
 const jwt = require("jsonwebtoken");
-const { generateToken } = require("./utils/cookie");
+const { generateCookie } = require("./utils/cookie");
 const { hashPassword, matchPassword } = require("./utils/password");
 const { JWT_SECRET } = process.env;
 
@@ -25,7 +25,7 @@ module.exports.signup = async (event) => {
       })
       .promise();
 
-    const cookie = generateToken(userId, 1);
+    const cookie = generateCookie(userId, 1);
 
     return {
       statusCode: 200,

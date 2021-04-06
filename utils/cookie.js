@@ -4,7 +4,7 @@ const DAYS = 24 * 60 * 60 * 1000;
 
 const { JWT_SECRET } = process.env;
 
-module.exports.generateToken = (userId, expireTimeInDays) => {
+module.exports.generateCookie = (userId, expireTimeInDays) => {
   let date = new Date();
   date.setTime(date.getTime() + expireTimeInDays * DAYS);
   const expires = date.toUTCString();
