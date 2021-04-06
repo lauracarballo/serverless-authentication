@@ -1,6 +1,6 @@
-# React authentication with AWS Lambda
+# Serverless authentication with AWS Lambda
 
-This is the repo for a blog entry on [dev.to]().
+This is the repo for a blog entry on [dev.to](https://dev.to/lauracarballo/serverless-authentication-with-aws-lambda-427m).
 
 ## Motivation
 
@@ -8,12 +8,13 @@ For those getting a bit curious about how authentication really works in serverl
 
 ## Technologies
 
-- AWS serverless
+- Serverless Framework
+- AWS Lambda
 - DynamoDB
 
 ## Setup
 
-Clone this repo `git clone https://github.com/lauracarballo/authentication` to your desktop and run `npm install` to install all the dependencies.
+Clone this repo and run `npm install` to install all the dependencies.
 
 ## To run the project
 
